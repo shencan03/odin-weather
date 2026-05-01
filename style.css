@@ -38,6 +38,8 @@ header {
 .search-bar input {
   width: 20vw;
   background-color: #666666;
+  color: #eddeff;
+  font-size: 1.3rem;
 }
 
 .weather-container {
