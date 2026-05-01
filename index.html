@@ -4,10 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>  
 </head>
 <body>
-  Weather App
+  <header>
+    <h1>Weather Right Now</h1>
+  </header>
+  <main>
+    <div class="search-bar">
+      <form action="get">
+        <label for="location"></label>
+        <input type="text">
+      </form>
+    </div>
+    <div class="weather-container">
+      <div class="weather-hero-container">London</div>
+      <img id="sunny" src="image/sunny.jpg" alt="sunny and clear sky"> 
+      <div class="weather-footer-container">
+        <span id="temperature">100 fahrenheit</span>
+        <span id="time">00:03</span>
+    </div>
+  </main>
 </body>
 </html>

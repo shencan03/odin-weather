@@ -3,6 +3,66 @@
   padding: 0;
 }
 
-html {
-  background-color: purple;
+body {
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1A0030;
+  color: #EEDEFF;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #666666;
+  width: 100%;
+}
+
+.search-bar {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.search-bar input {
+  width: 20vw;
+  background-color: #666666;
+}
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-hero-container {
+  background-color: #666666;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.weather-footer-container {
+  background-color: #666666;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+img#sunny {
+  width: 480px;
+  height: auto;
 }
