@@ -16,11 +16,36 @@ const handleSubmit = async (e) => {
 
     const response = await fetch(request)
     const data = await response.json()
+    
+    const localHourRounded = date.getMinutes() >= 30 ? date.getHours() + 1 : date.getHours()
+    const weatherRightNow = data.days[0].hours[localHourRounded]
 
-    return data
+    // return data.days[0].hours[localHourRounded]
+
+    return {
+      time: localHourRounded,
+      resolvedAddress: data.resolvedAddress,
+      temp: weatherRightNow.temp,
+      conditions: weatherRightNow.conditions,
+    }
   }
 
-  console.log(await getWeather())
+  
+  const updateWeather = async () => {
+    const weatherRightNow = await getWeather()
+
+    const weatherHeroText = document.getElementById("weather-hero-text")
+    weatherHeroText.textContent = weatherRightNow.resolvedAddress.charAt(0).toUpperCase() + weatherRightNow.resolvedAddress.substring(1)
+
+    const weatherTemp = document.getElementById("temperature")
+    weatherTemp.textContent = weatherRightNow.temp + "fahrenheit"
+
+    const weatherTime = document.getElementById("time")
+    weatherTime.textContent = weatherRightNow.time
+  }
+  
+  updateWeather()
+
 }
 
 const searchForm = document.getElementById("search-weather-form")

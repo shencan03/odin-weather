@@ -60,11 +60,14 @@ header {
   background-color: #666666;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 2rem;
+  gap: 2rem;
 }
 
+
 img#sunny {
-  width: 480px;
+  flex: 1;
+  width: 640px;
   height: auto;
 }
