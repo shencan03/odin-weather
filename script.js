@@ -1,4 +1,3 @@
-
 const handleSubmit = async (e) => {
   e.preventDefault()
   const formInput = document.getElementById("search-weather-input")
@@ -8,20 +7,19 @@ const handleSubmit = async (e) => {
     const apiKey = 'WYBLSPMR5E9HAWVM9VNC6T5AJ'
     const baseURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
 
-    const date = new Date()
-    const currentDate = date.toISOString().split("T")[0]
-
+    const date = (new Date()).toISOString()
+    const dateYMD = date.split("T")[0]
     const location = formInput.value
-    const request = baseURL + location + "/" + currentDate + "/" + "?key=" + apiKey
+    
+    const request = `${baseURL}${location}/${dateYMD}?timezone=Z&key=${apiKey}`
 
     const response = await fetch(request)
     const data = await response.json()
     
-    const localHourRounded = date.getMinutes() >= 30 ? date.getHours() + 1 : date.getHours()
-    const weatherRightNow = data.days[0].hours[localHourRounded]
+    const hourRounded = parseInt(date.split("T")[1].split(":")[1]) < 30 ? parseInt(date.split("T")[1].split(":")[0]) : parseInt(date.split("T")[1].split(":")[0]) + 1
+    const weatherRightNow = data.days[0].hours[parseInt(hourRounded)]
 
     return {
-      time: date.toLocaleTimeString().split(" ")[0],
       resolvedAddress: data.resolvedAddress,
       temp: weatherRightNow.temp,
       conditions: weatherRightNow.conditions,
@@ -43,8 +41,8 @@ const handleSubmit = async (e) => {
     const weatherTemp = document.getElementById("temperature")
     weatherTemp.innerHTML = fahToCel(weatherRightNow.temp) + "&deg;C"
 
-    const weatherTime = document.getElementById("time")
-    weatherTime.textContent = weatherRightNow.time
+    const weatherCondition = document.getElementById("condition")
+    weatherCondition.textContent = weatherRightNow.conditions
 
   }
   
