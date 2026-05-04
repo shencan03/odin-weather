@@ -20,10 +20,8 @@ const handleSubmit = async (e) => {
     const localHourRounded = date.getMinutes() >= 30 ? date.getHours() + 1 : date.getHours()
     const weatherRightNow = data.days[0].hours[localHourRounded]
 
-    // return data.days[0].hours[localHourRounded]
-
     return {
-      time: localHourRounded,
+      time: date.toLocaleTimeString().split(" ")[0],
       resolvedAddress: data.resolvedAddress,
       temp: weatherRightNow.temp,
       conditions: weatherRightNow.conditions,
@@ -32,16 +30,22 @@ const handleSubmit = async (e) => {
 
   
   const updateWeather = async () => {
+
     const weatherRightNow = await getWeather()
 
     const weatherHeroText = document.getElementById("weather-hero-text")
     weatherHeroText.textContent = weatherRightNow.resolvedAddress.charAt(0).toUpperCase() + weatherRightNow.resolvedAddress.substring(1)
 
+    const fahToCel = (fah) => {
+      return parseInt((fah - 32) * 5 / 9)
+    }
+
     const weatherTemp = document.getElementById("temperature")
-    weatherTemp.textContent = weatherRightNow.temp + "fahrenheit"
+    weatherTemp.innerHTML = fahToCel(weatherRightNow.temp) + "&deg;C"
 
     const weatherTime = document.getElementById("time")
     weatherTime.textContent = weatherRightNow.time
+
   }
   
   updateWeather()
