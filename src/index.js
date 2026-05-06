@@ -1,11 +1,12 @@
 import fetchAndRender from "./fetch-and-render.js"
 import "./style.css"
-import sunny from "./image/sunny.jpg"
+import createWeatherContainer from "./create-weather-container.js"
 
-const weatherHeroContainer = document.querySelector(".weather-hero-container")
-const sunnyImg = document.createElement("img")
-sunnyImg.src = sunny
-sunnyImg.id = "sunny"
-weatherHeroContainer.after(sunnyImg)
+let firstSearch = true
+
+if (firstSearch) {
+  createWeatherContainer()
+  firstSearch = false
+}
 
 fetchAndRender()
