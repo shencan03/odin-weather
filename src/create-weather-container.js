@@ -10,7 +10,7 @@ export default function createWeatherContainer() {
 
 
   const weatherFooterContainer = document.createElement("div")
-  weatherFooterContainer.classList.add("weather-hero-container")
+  weatherFooterContainer.classList.add("weather-footer-container")
 
   const weatherFooterTempSpan = document.createElement("span")
   weatherFooterTempSpan.id = "temperature"

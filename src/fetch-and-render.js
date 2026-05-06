@@ -1,5 +1,16 @@
+import createWeatherContainer from "./create-weather-container.js"
+import { firstSearch, updateFirstSearch } from "./index.js"
+
+
 export default async function fetchAndRender() {
+
   const handleSubmit = async (e) => {
+
+    if(firstSearch){
+      createWeatherContainer()
+      updateFirstSearch()
+    }
+
     e.preventDefault()
     const formInput = document.getElementById("search-weather-input")
 
@@ -18,7 +29,6 @@ export default async function fetchAndRender() {
       const data = await response.json()
       
       const hour = parseInt(date.split("T")[1].split(":")[0])
-      console.log(hour)
       const weatherRightNow = data.days[0].hours[parseInt(hour)]
 
       return {
